@@ -1,8 +1,14 @@
 {
-  "name": "gemini-text-app",
+  "name": "gemini-render-app",
   "version": "1.0.0",
-  "description": "A Netlify function to process text with Gemini.",
+  "description": "A simple Express server for Render to process text with Gemini.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
+    "express": "^4.19.2",
     "node-fetch": "^3.3.2"
   }
 }
