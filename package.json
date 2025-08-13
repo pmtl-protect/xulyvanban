@@ -1,0 +1,8 @@
+{
+  "name": "gemini-text-app",
+  "version": "1.0.0",
+  "description": "A Netlify function to process text with Gemini.",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
