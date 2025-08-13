@@ -24,7 +24,7 @@
 </head>
 <body class="h-full flex flex-col bg-slate-100 text-slate-800">
     <header class="bg-white/80 backdrop-blur-sm border-b border-slate-200 p-4 shadow-sm">
-        <h1 class="text-xl font-bold text-center text-slate-900">Trợ Lý Xử Lý Văn Bản</h1>
+        <h1 class="text-xl font-bold text-center text-slate-900">Trình Bày & Tóm Tắt Văn Bản với Gemini</h1>
     </header>
 
     <main class="flex-grow p-2 sm:p-4 overflow-y-auto">
@@ -38,7 +38,7 @@
 
             <!-- Vùng kết quả -->
             <div class="textarea-container bg-white rounded-xl shadow-sm border border-slate-200">
-                <label for="outputText" class="block text-base font-semibold p-3 border-b border-slate-200">Kết quả</label>
+                <label for="outputText" class="block text-base font-semibold p-3 border-b border-slate-200">Kết quả chuyên nghiệp</label>
                 <textarea id="outputText" readonly class="w-full p-3 bg-slate-50 rounded-b-xl focus:outline-none resize-none"></textarea>
             </div>
 
@@ -51,7 +51,7 @@
             <button id="processButton" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 active:scale-95 transition-all duration-150 shadow-md flex items-center justify-center gap-3 w-full sm:w-auto">
                 <svg id="processIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L14.5 8.5L21 10L14.5 11.5L12 18L9.5 11.5L3 10L9.5 8.5L12 2Z"/><path d="M4 2L5 4"/><path d="M19 13L20 15"/><path d="M2 17L3 15"/><path d="M12 22L11 20"/></svg>
                 <svg id="loadingIcon" class="hidden animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-                <span id="buttonText">Xử lý</span>
+                <span id="buttonText">Xử lý với Gemini</span>
             </button>
             <button id="copyButton" title="Sao chép" class="bg-green-600 text-white font-bold p-3 rounded-lg hover:bg-green-700 active:scale-95 transition-all duration-150 shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
@@ -91,23 +91,21 @@
             setLoading(true);
             outputText.value = "Gemini đang xử lý, vui lòng chờ...";
 
-            // The API endpoint is now our own Netlify Function
-            const apiUrl = '/.netlify/functions/process-text';
+            // The API endpoint is now our own backend server
+            const apiUrl = '/api/process-text';
 
             try {
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    // Send only the text, the function will build the full prompt
                     body: JSON.stringify({ originalText: originalText })
                 });
 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || `Lỗi từ server: ${response.statusText}`);
-                }
-
                 const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || `Lỗi từ server: ${response.statusText}`);
+                }
                 
                 if (result.formattedText) {
                     outputText.value = result.formattedText;
@@ -116,7 +114,7 @@
                 }
 
             } catch (error) {
-                console.error("Lỗi khi gọi Netlify Function:", error);
+                console.error("Lỗi khi gọi API:", error);
                 outputText.value = `Đã xảy ra lỗi: ${error.message}. Vui lòng kiểm tra lại.`;
             } finally {
                 // End loading state
