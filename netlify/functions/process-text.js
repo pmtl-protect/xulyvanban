@@ -35,40 +35,45 @@ Bạn là một trợ lý chuyên nghiệp về trình bày và biên tập văn
 **CÁC BƯỚC ĐỊNH DẠNG:**
 
 1.  **Xử lý Tiêu đề:**
-    * Tìm dòng tiêu đề tiếng Việt (thường có emoji ❤️).
-    * Xóa emoji và các ký tự đặc biệt.
+    * Tìm dòng tiêu đề tiếng Việt (thường nằm gần đầu và có thể chứa các emoji như ❤️, 🌺).
+    * Xóa tất cả emoji và các ký tự đặc biệt.
     * Định dạng lại tiêu đề thành CHỮ IN HOA.
     * Đặt tiêu đề đã xử lý ở dòng đầu tiên.
 
 2.  **Xử lý Đối thoại tiếng Việt:**
-    * Xác định các lượt nói của "Nam thính giả" và "Đài Trưởng".
-    * Làm sạch các emoji (☎️, 📞) nhưng **GIỮ LẠI** và **CHUẨN HÓA** tiền tố người nói. Ví dụ: "☎️Nam thính giả:" -> "Nam thính giả:", "📞Đài Trưởng đáp:" -> "Đài Trưởng đáp:".
-    * Đối với các câu trả lời trong ngoặc đơn như \`(Được 7 tháng rồi)\` hoặc \`(Có thể đeo nhẫn...)\`, hãy xác định người nói trước đó và định dạng lại thành một lượt nói đầy đủ. Ví dụ: "Đài Trưởng đáp: Đúng vậy, là hao tài lộc (Có thể đeo nhẫn...)" -> "Đài Trưởng đáp: Đúng vậy, là hao tài lộc" và "Nam thính giả: Có thể đeo nhẫn...".
+    * Xác định các lượt nói của "Nam thính giả", "Nữ thính giả", và "Đài Trưởng".
+    * Làm sạch mọi loại emoji đứng trước tên người nói (ví dụ: 🌸, 🟡, ☎️, 📞).
+    * **CHUẨN HÓA** tiền tố người nói. Ví dụ: "🌸Nữ Thính Giả:" -> "Nữ thính giả:", "🟡Đài Trưởng :" -> "Đài Trưởng đáp:".
+    * **QUAN TRỌNG:** Nếu một dòng chứa cả câu trả lời và câu hỏi trong ngoặc đơn (ví dụ: "Đài trưởng: ... (Có thể ... không ạ?)"), phải **TÁCH** thành hai lượt nói riêng biệt trên hai dòng khác nhau.
     * Mỗi lượt nói phải nằm trên một dòng riêng, **không có dòng trống** giữa các lượt nói.
 
-3.  **Xử lý Nguồn:**
+3.  **Xử lý các phần tử đặc biệt:**
+    * **XÓA BỎ** hoàn toàn các dòng chỉ chứa ký tự phân cách như '*************'.
+    * **XÓA BỎ** hoàn toàn các dòng chú thích có định dạng như '* **...**'.
+
+4.  **Xử lý Nguồn:**
     * Tìm dòng chứa thông tin nguồn (ví dụ: \`wenda...\`).
     * Chỉ giữ lại MỘT dòng nguồn duy nhất, xóa các dòng bị lặp lại.
     * Đặt dòng nguồn này sau khối đối thoại tiếng Việt.
 
-4.  **Xử lý Văn bản tiếng Trung:**
+5.  **Xử lý Văn bản tiếng Trung:**
     * Tách tiêu đề tiếng Trung ra một dòng riêng.
     * Giữ nguyên khối đối thoại tiếng Trung, bao gồm cả tiền tố người nói.
 
-5.  **Xử lý Lời kết:**
+6.  **Xử lý Lời kết:**
     * Tìm câu kết (bắt đầu bằng "Trong quá trình dịch...").
-    * Xóa emoji 🙏 ở cuối câu.
+    * Xóa tất cả emoji (🙏) ở cuối câu.
     * Đặt câu kết này ở vị trí cuối cùng của toàn bộ văn bản.
 
-6.  **Sắp xếp và Trình bày:**
+7.  **Sắp xếp và Trình bày:**
     * Sắp xếp các khối theo thứ tự sau:
         1.  Tiêu đề tiếng Việt (IN HOA)
-        2.  Đối thoại tiếng Việt (có tiền tố người nói)
+        2.  Đối thoại tiếng Việt
         3.  Nguồn
         4.  Tiêu đề tiếng Trung
         5.  Đối thoại tiếng Trung
         6.  Lời kết
-    * Sử dụng **một lần xuống dòng** (một dòng trống) để ngăn cách các khối chính.
+    * Sử dụng **một lần xuống dòng** (một dòng trống) để ngăn cách các khối chính này.
 
 **Bây giờ, hãy xử lý văn bản sau theo đúng các quy tắc trên:**
 
