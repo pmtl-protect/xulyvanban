@@ -1,0 +1,21 @@
+{
+  "short_name": "Xử Lý Văn Bản",
+  "name": "Xử Lý Văn Bản",
+  "icons": [
+    {
+      "src": "logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#f59e0b",
+  "background_color": "#f8fafc",
+  "description": "Xử Lý Văn Bản"
+}
